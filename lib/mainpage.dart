@@ -1,12 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:hlmobile/config/const.dart';
 import 'package:hlmobile/data/sharepre.dart';
 import 'package:hlmobile/model/user.dart';
-import 'package:hlmobile/page/category/categorywidget.dart';
+import 'package:hlmobile/page/cart/cart_screen.dart';
+import 'package:hlmobile/page/category/category_list.dart';
 import 'package:hlmobile/page/defaultwidget.dart';
 import 'package:hlmobile/page/detail.dart';
-import 'package:hlmobile/page/home.dart';
-import 'package:hlmobile/page/product/productwidget.dart';
+import 'package:hlmobile/page/history/history_screen.dart';
+import 'package:hlmobile/page/product/product_data_sell.dart';
+import 'package:hlmobile/page/product/product_list.dart';
 import 'package:hlmobile/route/page1.dart';
 import 'package:hlmobile/route/page2.dart';
 import 'package:hlmobile/route/page3.dart';
@@ -50,14 +53,14 @@ class _MainpageState extends State<Mainpage> {
     var nameWidgets="Home";
     switch(index){
       case 0:{
-        return const Product();
+        return const ProductBuilderSell();
       }
-      case 1:
-        nameWidgets="Contact";
-        break;
-      case 2:
-        nameWidgets="Infor";
-        break;
+      case 1:{
+        return const HistoryScreen();
+      }
+      case 2:{
+        return const CartScreen();
+      }
       case 3:
         {
           return const Detail();
@@ -73,7 +76,8 @@ class _MainpageState extends State<Mainpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("HL mobile"),
+        title: Text("HL mobile",style: textTitle(24),),
+        iconTheme: const IconThemeData(color: colorPrimary),
       ),
       drawer: Drawer(
         child: ListView(
@@ -129,22 +133,22 @@ class _MainpageState extends State<Mainpage> {
             ),
             ListTile(
               leading: const Icon(Icons.pages),
-              title: const Text("Page 1"),
+              title: const Text("Category List For Admin"),
               onTap: () {
                 Navigator.pop(context);
                 _selectedIndex=0;
                 Navigator.push(context, 
-                  MaterialPageRoute(builder: (context)=> const Page1()));
+                  MaterialPageRoute(builder: (context)=> const CategoryList()));
               },
             ),
             ListTile(
               leading: const Icon(Icons.pages),
-              title: const Text("Page 2"),
+              title: const Text("Product List For Admin"),
               onTap: () {
                 Navigator.pop(context);
                 _selectedIndex=0;
                 Navigator.push(context, 
-                  MaterialPageRoute(builder: (context)=>const Page2()));
+                  MaterialPageRoute(builder: (context)=>const ProductList()));
               },
             ),
             ListTile(

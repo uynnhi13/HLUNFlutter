@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hlmobile/config/const.dart';
 import 'package:hlmobile/data/api.dart';
 import 'package:hlmobile/model/register.dart';
 
@@ -44,7 +45,8 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Register"),
+        title: Text("Đăng ký",style: textTitle(23),),
+        iconTheme: const IconThemeData(color: colorTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -53,16 +55,6 @@ class _RegisterState extends State<Register> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  alignment: Alignment.center,
-                  child: const Text(
-                    'Register Info',
-                    style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue),
-                  ),
-                ),
                 signUpWidget(),
               ],
             ),
@@ -186,7 +178,21 @@ class _RegisterState extends State<Register> {
             labelText: "Image URL",
             icon: Icon(Icons.image),
           ),
-        )
+        ),
+        ElevatedButton(
+                    onPressed: register, 
+                    child: const Text("Đăng Ký",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size.fromHeight(55),
+                      backgroundColor: colorPrimary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),),
       ],
     );
   }

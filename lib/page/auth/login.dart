@@ -31,14 +31,11 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Login"),
-      ),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 100,left: 17,right: 17),
             child: Center(
               child: Column(
                 children: [
@@ -47,49 +44,52 @@ class _LoginScreenState extends State<LoginScreen> {
                     errorBuilder: (context, error, stackTrace) =>
                         const Icon(Icons.image),
                   ),
-                  const Text(
-                    "LOGIN INFORMATION",
-                    style: TextStyle(fontSize: 24, color: Colors.blue),
-                  ),
                   TextFormField(
                     controller: accountController,
                     decoration: const InputDecoration(
-                      labelText: "Account",
-                      icon: Icon(Icons.person),
+                      labelText: "Nhập Account",
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.person),
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 18,),
                   TextFormField(
                     controller: passwordController,
                     obscureText: true,
                     decoration: const InputDecoration(
-                      labelText: "Password",
-                      icon: Icon(Icons.password),
+                      labelText: "Nhập Password",
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.lock),
+                      suffixIcon: Icon(Icons.remove_red_eye),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: ElevatedButton(
-                        onPressed: login,
-                        child: const Text("Login"),
-                      )),
-                      const SizedBox(
-                        width: 16,
+                  const SizedBox(height: 40,),
+                  ElevatedButton(
+                    onPressed: login, 
+                    child: const Text("Đăng Nhập",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size.fromHeight(55),
+                      backgroundColor: colorPrimary,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      Expanded(
-                          child: OutlinedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Register()));
-                        },
-                        child: const Text("Register"),
-                      ))
-                    ],
-                  )
+                    ),),
+                    const SizedBox(height: 10,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Chưa có Tài Khoản? ",style: TextStyle(fontSize: 16),),
+                        TextButton(
+                          onPressed:() {
+                            Navigator.push(context, MaterialPageRoute(builder:(context) => const Register()));
+                          }, 
+                          child: const Text("Đăng ký tại đây",style: TextStyle(fontSize: 16, color: colorTitle),))
+                      ],
+                    )
                 ],
               ),
             ),

@@ -19,7 +19,7 @@ class CategoryModel {
     return {
       'id': id,
       'name': name,
-      'desc': desc,
+      'description': desc,
       'imgURLCate':imgURLCate,
     };
   }

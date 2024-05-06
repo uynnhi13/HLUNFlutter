@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:hlmobile/page/product/product_add.dart';
+import 'package:hlmobile/page/product/product_data_sell.dart';
+
+class ProductList extends StatefulWidget {
+  const ProductList({super.key});
+
+  @override
+  State<ProductList> createState() => _ProductListState();
+}
+
+class _ProductListState extends State<ProductList> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Product List"),
+      ),
+      body: const Center(child: ProductBuilderSell()),
+    );
+  }
+}
